@@ -25,8 +25,8 @@
                         </div>
                         <div class="col-7">
                             <a href="{{url('getAllUsers')}}"> <div class="numbers">
-                                <p class="card-category">No.of Products </p>
-                                <h4 class="card-title">  </h4>
+                                <p class="card-category">No.of Users </p>
+                                <h4 class="card-title"> {{count($users)}} </h4>
                             </div> </a>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-refresh"></i> Users
+                        <i class="fa fa-refresh"></i> Users 
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                         <div class="col-7">
                             <div class="numbers">
                                 <p class="card-category"> No. of Products </p>
-                                <h4 class="card-title"> 2 </h4>
+                                <h4 class="card-title"> {{count($products)}} </h4>
                             </div>
                         </div>
                     </div>
@@ -77,8 +77,8 @@
                         </div>
                         <div class="col-7">
                             <div class="numbers">
-                                <p class="card-category"> Active Users</p>
-                                <h4 class="card-title">23</h4>
+                                <p class="card-category"> Cart Products </p>
+                                <h4 class="card-title"> {{count($cart)}} </h4>
                             </div>
                         </div>
                     </div>
@@ -102,8 +102,8 @@
                         </div>
                         <div class="col-7">
                             <div class="numbers">
-                                <p class="card-category"> Products </p>
-                                <h4 class="card-title"> 10 </h4>
+                                <p class="card-category"> Total Purchase </p>
+                                <h4 class="card-title"> {{$purchase[0]}} </h4>
                             </div>
                         </div>
                     </div>

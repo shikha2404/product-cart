@@ -55,6 +55,13 @@
                             <p> My Cart </p>
                         </a>
                     </li>
+
+                    <li class="nav-item @if($segment == 'total-sales'){{'active'}} @endif ">
+                        <a class="nav-link" href="{{url('total-sales')}}">
+                            <i class="nc-icon nc-chart-pie-35"></i>
+                            <p> Total Sales </p>
+                        </a>
+                    </li>
  
                 </ul>
 

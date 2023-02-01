@@ -33,6 +33,7 @@
           <div class="card-body table-striped table-no-bordered table-hover dataTable dtr-inline table-full-width">
             <div class="toolbar">
   
+            <a href="{{url('buy-products')}}" class="btn btn-info btn-wd" style="float: right;" > Buy Now </a>
               <!-- Here you can write extra buttons/actions for the toolbar  -->
               <center>
                 <h4 class="card-title"> My Cart Products List </h4>

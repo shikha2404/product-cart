@@ -49,7 +49,8 @@
                     <th>Name</th>
                     <th>SKU</th>
                     <th>Image</th>
-                    <th>Quantity</th>  
+                    <th>Stock</th>  
+                    <th>Price</th> 
                     <th> Add to Cart </th>                   
                     <th class="disabled-sorting text-right">Actions</th>
                   </tr>
@@ -64,7 +65,9 @@
                     <td> @if($product->image!='') <img src="{{URL::to('public/uploads/image/'.$product->image)}}" height="70" width="70" > @endif </td>
                     <td class="qtyUpdate" > @if($product->quantity==0) 
                       <p style="color:red" > {{ 'Out of Stock' }} </p> @else {{$product->quantity}} @endif </td>
-                    <td> 
+                    <td> {{$product->price }}  </td>
+                    
+                      <td> 
                        
                       <a class="login-trigger" href="#" data-target="#login{{$product->id}}" data-toggle="modal"> Add to Cart </a>
 

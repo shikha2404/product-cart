@@ -65,6 +65,17 @@
 									</div>
 								</div>
 							</fieldset> 
+
+							<fieldset>
+								<div class="form-group">
+									<div class="row">
+										<label class="col-sm-2 control-label"> Product Price </label>
+										<div class="col-sm-10">
+											<input type="number" name="quantity" class="form-control"  >
+										</div>
+									</div>
+								</div>
+							</fieldset>
 							 
 							<button type="submit" class="btn btn-info"  > Submit  </button>
 						</form>

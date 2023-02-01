@@ -61,7 +61,7 @@ class ProductsController extends Controller
                 $image = $img ;
               }  
            
-            $productSave = Product::insertGetId([ 'product_name'=>$post['product_name'], 'image'=>$image , 'product_sku'=>$post['product_sku'] , 'description'=>$post['description'], 'quantity'=>$post['quantity'], 'added_by' => $userId ]);
+            $productSave = Product::insertGetId([ 'product_name'=>$post['product_name'], 'image'=>$image , 'product_sku'=>$post['product_sku'] , 'description'=>$post['description'], 'quantity'=>$post['quantity'], 'added_by' => $userId , 'price' => $post['price'] ]);
  
              if(!empty($productSave)) {
                 DB::commit();
@@ -135,6 +135,7 @@ class ProductsController extends Controller
             $data['product_sku'] = $post['product_sku'] ;
             $data['description'] = $post['description'] ;
             $data['quantity'] = $post['quantity'] ;
+            $data['price'] = $post['price'] ;
 
             $productUpdate = Product::where('id',$product_id)->update($data);
  
@@ -176,9 +177,11 @@ class ProductsController extends Controller
           $quantity = $cart->quantity + $quantity ;
        }
 
+       $amount = $quantity * $prodct->price ;
+
       $addCart = DB::table('user_cart')
         ->updateOrInsert(['user_id'=>$userId , 'product_id'=>$product_id ],
-        ['user_id'=>$userId, 'product_id'=>$product_id ,	'quantity'=> $quantity ]) ;
+        ['user_id'=>$userId, 'product_id'=>$product_id ,	'quantity'=> $quantity , 'amount'=> $amount ]) ;
  
         // update Qty
         $data['quantity'] = $prodct->quantity - $quantity ;
@@ -194,7 +197,6 @@ class ProductsController extends Controller
  
       $cartProducts = DB::table('user_cart')
             ->join('tbl_products', 'user_cart.product_id', '=', 'tbl_products.id')
-           
             ->select('user_cart.*', 'tbl_products.product_name', 'tbl_products.product_sku','tbl_products.image' )
             ->where('user_cart.user_id',$userId)
             ->orderBy("user_cart.id", "desc")
@@ -223,5 +225,42 @@ class ProductsController extends Controller
        return redirect('my-cart' );
 
    }
+
+   public function buyProducts(Request $request)
+   {
+       $userId = Session::get('admin_info')['id'] ;
+       $cart = DB::table('user_cart')->where([ 'user_id'=> $userId ])->get() ;
+
+       if(sizeof($cart)>0)
+       {
+         foreach($cart as $product)
+         {
+            $insertInDB = DB::table('purchase_history')->insert(['product_id'=>$product->product_id ,	'qty'=>$product->quantity , 'amount'=> $product->amount ]) ;
+         }
+       } else {
+
+            Session::flash('success_msg', 'No Product found!!') ;
+            return redirect('my-cart' ) ;
+
+       }
+
+       DB::table('user_cart')->where([ 'user_id'=> $userId ])->delete();
+
+       Session::flash('success_msg', 'Product purchased Successfully!!') ;
+       return redirect('my-cart' );
+
+   }
+
+   public function totalSales(Request $request)
+   {
+      $purchase = DB::table('purchase_history')
+      ->select( 'purchase_history.created_at','tbl_products.product_name', 'tbl_products.product_sku', 'amount')
+      ->join('tbl_products', 'purchase_history.product_id', '=', 'tbl_products.id')
+       ->get() ;
+
+      return view('total-sales',compact('purchase')) ;
+
+   }
+   
  
  }

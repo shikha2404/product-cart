@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\Models\Customer;
+use App\Models\Product;
 use App\Models\User;
 use DB;
 use Hash;
@@ -149,8 +149,15 @@ class AdminController extends Controller
     }
 
     public function dashboard(){
+
+      $userId = Session::get('admin_info')['id'] ;
+
         $users = User::get() ;
-        return view('dashboard',compact('users' ));
+        $products = Product::get() ;
+        $cart = DB::table('user_cart')->where('user_id',$userId)->get() ;
+        $purchase = DB::table('purchase_history')->selectRaw( 'sum(amount)  as sum')-> where('user_id',$userId)->groupBy('user_id')->pluck('sum' ) ;
+ 
+        return view('dashboard',compact('users','products', 'cart', 'purchase'));
     }
 
     // User Related Functions
