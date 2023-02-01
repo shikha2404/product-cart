@@ -35,7 +35,7 @@
              <div class="content">
                 <div class="container">
                     <div class="col-md-6 col-sm-6 ml-auto mr-auto">
-                        <form class="form" method="post" action="{{url('login')}}" >
+                        <form class="form" method="post" action="{{url('login')}}" autocomplete="off">
                             @csrf
                             <div class="card card-login card-hidden">
                                 <div class="card-header ">

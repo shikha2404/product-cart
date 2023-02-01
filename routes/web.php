@@ -34,6 +34,8 @@ Route::get('/dashboard', [AdminController::class, 'dashboard']);
 
 Route::get('/getAllUsers', [AdminController::class, 'getAllUsers']);
 
+Route::get('/removeUser/{id}', [AdminController::class, 'removeUser']);
+
 // Products Routes
 Route::get('/getAllProducts', [ProductsController::class, 'getAllProducts']);
 
@@ -56,3 +58,4 @@ Route::get('/removeProductFromCart/{id}', [ProductsController::class, 'removePro
 Route::get('/buy-products', [ProductsController::class, 'buyProducts']);
 
 Route::get('/total-sales', [ProductsController::class, 'totalSales']);
+

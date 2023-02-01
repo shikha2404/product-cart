@@ -38,7 +38,7 @@
               </div>
               <!-- Here you can write extra buttons/actions for the toolbar  -->
               <center>
-                <h4 class="card-title"> All Products List </h4>
+                <h4 class="card-title"> Products List </h4>
               </center>
             </div>
             <div class="fresh-datatables">

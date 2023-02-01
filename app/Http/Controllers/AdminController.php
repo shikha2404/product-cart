@@ -123,6 +123,7 @@ class AdminController extends Controller
         }
         if (!Hash::check($password, $user->password)) {
             Session::flash('error_msg', 'Login Fail, please check password!!');
+            return redirect()->back();
         }
 
         $session = array(

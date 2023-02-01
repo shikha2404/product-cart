@@ -65,7 +65,7 @@
                      
                     <td class="text-right">
                       
-                     <a href="{{url('removeProductFromCart/'.encrypt($product->id))}}" class="btn btn-link btn-danger" onclick="return confirm('Do you really want to delete');">
+                     <a href="{{url('removeProductFromCart/'.encrypt($product->id))}}" class="btn btn-link btn-danger" onclick="return confirm('Do you really want to remove product from Cart');">
                         <i class="fa fa-trash"></i>
                      </a>
                        

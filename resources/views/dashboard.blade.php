@@ -7,9 +7,17 @@
 
 <div class="container-fluid">
 
-    @if (Session::has('success_msg'))
-      <div class="alert alert-success">{{ Session::get('success_msg') }}</div>
-    @endif
+         <div class="col-md-12">
+            @if(session()->has('success_msg'))
+                        
+            <div class="alert alert-info">
+                <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
+                    <i class="nc-icon nc-simple-remove"></i>
+                </button>
+                <span> <b> Success - </b>  {{ session()->get('success_msg') }} </span>
+            </div>
+            @endif
+         </div>
 
     <div class="row">
          
