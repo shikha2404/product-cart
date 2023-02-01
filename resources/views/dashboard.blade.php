@@ -26,7 +26,7 @@
                         <div class="col-7">
                             <a href="{{url('getAllUsers')}}"> <div class="numbers">
                                 <p class="card-category">No.of Users </p>
-                                <h4 class="card-title"> {{count($users)}} </h4>
+                                <h4 class="card-title"> @if(isset($users)) {{count($users)}} @endif </h4>
                             </div> </a>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <div class="col-7">
                             <div class="numbers">
                                 <p class="card-category"> No. of Products </p>
-                                <h4 class="card-title"> {{count($products)}} </h4>
+                                <h4 class="card-title"> @if(isset($products)) {{count($products)}} @endif </h4>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                         <div class="col-7">
                             <div class="numbers">
                                 <p class="card-category"> Cart Products </p>
-                                <h4 class="card-title"> {{count($cart)}} </h4>
+                                <h4 class="card-title"> @if(isset($cart)) {{ count($cart)}} @endif </h4>
                             </div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                         <div class="col-7">
                             <div class="numbers">
                                 <p class="card-category"> Total Purchase </p>
-                                <h4 class="card-title"> {{$purchase[0]}} </h4>
+                                <h4 class="card-title"> @if(isset($purchase[0])) {{$purchase[0]}} @endif </h4>
                             </div>
                         </div>
                     </div>

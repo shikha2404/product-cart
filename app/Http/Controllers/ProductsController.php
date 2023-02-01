@@ -49,6 +49,7 @@ class ProductsController extends Controller
 
             $userId = Session::get('admin_info')['id'] ;
  
+            $image ="" ;
             if ($request['image']) {
 
                 if ($request->hasFile('image'))
@@ -235,7 +236,7 @@ class ProductsController extends Controller
        {
          foreach($cart as $product)
          {
-            $insertInDB = DB::table('purchase_history')->insert(['product_id'=>$product->product_id ,	'qty'=>$product->quantity , 'amount'=> $product->amount ]) ;
+            $insertInDB = DB::table('purchase_history')->insert([ 'user_id'=> $userId , 'product_id'=>$product->product_id ,	'qty'=>$product->quantity , 'amount'=> $product->amount ]) ;
          }
        } else {
 

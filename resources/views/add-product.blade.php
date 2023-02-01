@@ -16,7 +16,7 @@
 									<div class="row">
 										<label class="col-sm-2 control-label"> Product Name </label>
 										<div class="col-sm-10">
-											<input type="text" name="product_name" class="form-control"  >
+											<input type="text" name="product_name" class="form-control" required >
 										</div>
 									</div>
 								</div>
@@ -27,7 +27,7 @@
 									<div class="row">
 										<label class="col-sm-2 control-label"> Product SKU </label>
 										<div class="col-sm-10">
-											<input type="text" name="product_sku" class="form-control"  >
+											<input type="text" name="product_sku" class="form-control" required >
 										</div>
 									</div>
 								</div>
@@ -38,7 +38,7 @@
 									<div class="row">
 										<label class="col-sm-2 control-label"> Product Image </label>
 										<div class="col-sm-10">
-											<input type="file" name="image" class="form-control"  >
+											<input type="file" name="image" class="form-control" required >
 										</div>
 									</div>
 								</div>
@@ -49,7 +49,7 @@
 									<div class="row">
 										<label class="col-sm-2 control-label"> Description</label>
 										<div class="col-sm-10">
-											<textarea type="text" placeholder="placeholder" class="form-control" name="description" > </textarea>
+											<textarea type="text" placeholder="placeholder" class="form-control" name="description" required > </textarea>
 										</div>
 									</div>
 								</div>
@@ -60,7 +60,7 @@
 									<div class="row">
 										<label class="col-sm-2 control-label"> Product Qty </label>
 										<div class="col-sm-10">
-											<input type="number" name="quantity" class="form-control"  >
+											<input type="number" name="price" class="form-control" required >
 										</div>
 									</div>
 								</div>
@@ -71,7 +71,7 @@
 									<div class="row">
 										<label class="col-sm-2 control-label"> Product Price </label>
 										<div class="col-sm-10">
-											<input type="number" name="quantity" class="form-control"  >
+											<input type="number" name="quantity" class="form-control" required >
 										</div>
 									</div>
 								</div>

@@ -62,7 +62,10 @@
                     <td> {{$product->product_name }} </td>
                     <td> {{$product->product_sku }} </td>
                     
-                    <td> @if($product->image!='') <img src="{{URL::to('public/uploads/image/'.$product->image)}}" height="70" width="70" > @endif </td>
+                    <td> @if($product->image!='') 
+                     
+                      <img src="{{URL::to('public/uploads/image/'.$product->image)}}" height="70" width="70" >  @else {{'NA'}}  @endif </td>
+                      
                     <td class="qtyUpdate" > @if($product->quantity==0) 
                       <p style="color:red" > {{ 'Out of Stock' }} </p> @else {{$product->quantity}} @endif </td>
                     <td> {{$product->price }}  </td>
@@ -92,7 +95,7 @@
                               @csrf
                               <input type="hidden" name="prod_id" value="{{$product->id}}" >
                               <input type="text" name="sku" class="username form-control" placeholder="Username" readonly value="{{$product->product_sku}}" />
-                              <input type="number" name="qty" class="password form-control" placeholder="Quantity" max="{{$product->quantity}}" />
+                              <input type="number" name="qty" class="password form-control" placeholder="Quantity" min="1" max="{{$product->quantity}}" required />
                                
                               <button type="submit" class="btn btn-info" > Submit </button>
                             </form>
